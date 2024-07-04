@@ -1,6 +1,6 @@
 # Bus App
 
-A transportation app UI
+A transportation app UI.
 
 ## Prerequisite
 
