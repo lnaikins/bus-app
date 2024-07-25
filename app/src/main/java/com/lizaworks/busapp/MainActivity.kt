@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -11,8 +12,6 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,12 +28,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -44,11 +42,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ColorMatrix
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -58,20 +53,30 @@ import com.lizaworks.busapp.ui.theme.BrunswickGreen
 import com.lizaworks.busapp.ui.theme.BrunswickGreenLight
 import com.lizaworks.busapp.ui.theme.BusAppTheme
 import com.lizaworks.busapp.ui.theme.MintCream
-import com.lizaworks.busapp.ui.theme.Zomp
-import kotlin.math.cos
+import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            var showOnboarding by remember {
+                mutableStateOf(true)
+            }
             BusAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    OnboardingScreen()
-                    Content()
+
+                    Crossfade(targetState = showOnboarding, label = "") {
+                        if(it) OnboardingScreen( modifier = Modifier.padding(innerPadding))
+                        else Content( modifier = Modifier.padding(innerPadding))
+                    }
+
 
                 }
+            }
+            LaunchedEffect(key1 = Unit) {
+                delay(500)
+                showOnboarding = false
             }
         }
     }
@@ -383,7 +388,7 @@ fun PleasurableTrip() {
 
 
 @Composable
-fun GreetingPreview() {
+fun BusAppPreview() {
     BusAppTheme {
         Greeting_TextFields()
     }

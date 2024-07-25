@@ -10,11 +10,9 @@ To build this project you require:
 - Gradle 8.4.2+
 - Kotlin 2.0.0+
 
-
 # Technologies Used
 
 - [Jetpack Compose](https://developer.android.com/develop/ui/compose): Android's modern UI Toolkit
-
 
 # Screenshots
 
@@ -22,6 +20,9 @@ To build this project you require:
   <tr>
     <td>
       <img src="screenshots/Screenshot_20240703_214106.png"  width="250" alt="screenshot2">
+    </td>
+    <td>
+      <img src="screenshots/Screenshot_20240724_233330.png"  width="250" alt="screenshot2">
     </td>
   </tr>
 </table>
