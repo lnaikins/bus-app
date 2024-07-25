@@ -19,10 +19,10 @@ To build this project you require:
 <table>
   <tr>
     <td>
-      <img src="screenshots/Screenshot_20240703_214106.png"  width="250" alt="screenshot2">
+      <img src="screenshots/Screenshot_20240724_233330.png"  width="250" alt="screenshot2">
     </td>
     <td>
-      <img src="screenshots/Screenshot_20240724_233330.png"  width="250" alt="screenshot2">
+      <img src="screenshots/Screenshot_20240703_214106.png"  width="250" alt="screenshot2">
     </td>
   </tr>
 </table>
