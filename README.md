@@ -25,4 +25,5 @@ To build this project you require:
       <img src="screenshots/Screenshot_20240703_214106.png"  width="250" alt="screenshot2">
     </td>
   </tr>
+
 </table>
